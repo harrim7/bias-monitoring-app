@@ -22,6 +22,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  padding: 20px;
 }
 
 .App-link {
@@ -35,4 +36,19 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+main {
+  padding: 20px;
+}
+
+input[type="file"] {
+  margin: 20px 0;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
 }
