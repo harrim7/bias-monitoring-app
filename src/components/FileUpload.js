@@ -1,3 +1,4 @@
+// FileUpload.js
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -12,7 +13,9 @@ const FileUpload = () => {
     const formData = new FormData();
     formData.append('file', file);
 
-    axios.post('http://localhost:3001/upload', formData)
+    const apiUrl = process.env.REACT_APP_API_BASE_URL || 'http://localhost:3001';
+    
+    axios.post(`${apiUrl}/upload`, formData)
       .then(response => console.log(response.data))
       .catch(error => console.error(error));
   };
