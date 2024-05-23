@@ -18,8 +18,8 @@ const FileUpload = () => {
         formData.append('content', 'example_content'); // Example content
 
         console.log('Uploading file with formData:', formData);
-        axios.post('http://127.0.0.1:5000/upload', formData, {
-//        axios.post('https://bias-monitoring-backend-17bd6452f016.herokuapp.com/upload', formData, {
+//        axios.post('http://127.0.0.1:5000/upload', formData, {
+        axios.post('https://bias-monitoring-backend-17bd6452f016.herokuapp.com/upload', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             },
