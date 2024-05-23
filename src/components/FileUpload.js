@@ -3,6 +3,8 @@ import axios from 'axios';
 
 const FileUpload = () => {
     const [file, setFile] = useState(null);
+    const [analysisResults, setAnalysisResults] = useState(null);
+    const [error, setError] = useState(null);
 
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);
@@ -22,9 +24,11 @@ const FileUpload = () => {
             withCredentials: true
         })
         .then(response => {
-            console.log(response.data);
+            setAnalysisResults(response.data.analysis_results);
+            setError(null);
         })
         .catch(error => {
+            setError('An error occurred while uploading the file.');
             console.error(error);
         });
     };
@@ -33,6 +37,13 @@ const FileUpload = () => {
         <div>
             <input type="file" onChange={handleFileChange} />
             <button onClick={handleUpload}>Upload</button>
+            {error && <p style={{color: 'red'}}>{error}</p>}
+            {analysisResults && (
+                <div>
+                    <h2>Bias Analysis Results</h2>
+                    <pre>{JSON.stringify(analysisResults, null, 2)}</pre>
+                </div>
+            )}
         </div>
     );
 };
