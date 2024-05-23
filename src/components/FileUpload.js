@@ -11,11 +11,11 @@ const FileUpload = () => {
     const handleUpload = () => {
         const formData = new FormData();
         formData.append('file', file);
-        formData.append('user_id', 'example_user_id');
-        formData.append('document_type', 'example_document_type');
+        formData.append('user_id', 'example_user_id'); // Example user ID
+        formData.append('document_type', 'example_document_type'); // Example document type
+        formData.append('content', 'example_content'); // Example content
 
         axios.post('https://bias-monitoring-backend-17bd6452f016.herokuapp.com/upload', formData, {
-          
             headers: {
                 'Content-Type': 'multipart/form-data'
             },
