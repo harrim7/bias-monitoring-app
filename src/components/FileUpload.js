@@ -17,19 +17,22 @@ const FileUpload = () => {
         formData.append('document_type', 'example_document_type'); // Example document type
         formData.append('content', 'example_content'); // Example content
 
-        axios.post('https://bias-monitoring-backend-17bd6452f016.herokuapp.com/upload', formData, {
+        console.log('Uploading file with formData:', formData);
+        axios.post('http://127.0.0.1:5000/upload', formData, {
+//        axios.post('https://bias-monitoring-backend-17bd6452f016.herokuapp.com/upload', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             },
             withCredentials: true
         })
         .then(response => {
+            console.log('Upload response:', response.data);
             setAnalysisResults(response.data.analysis_results);
             setError(null);
         })
         .catch(error => {
+            console.error('Upload error:', error);
             setError('An error occurred while uploading the file.');
-            console.error(error);
         });
     };
 
